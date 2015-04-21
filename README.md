@@ -11,19 +11,19 @@ Inspired by official PHP sdk v1.4.
 
 ### IOS
 
-[x] Broadcast
-[ ] Customizedcast
-[ ] Filecast
-[x] Groupcast
-[x] Unicast
+- [x] Broadcast
+- [ ] Customizedcast
+- [ ] Filecast
+- [x] Groupcast
+- [x] Unicast
 
 ### Android
 
-[x] Broadcast
-[ ] Customizedcast
-[ ] Filecast
-[x] Groupcast
-[x] Unicast
+- [x] Broadcast
+- [ ] Customizedcast
+- [ ] Filecast
+- [x] Groupcast
+- [x] Unicast
 
 ## Usage
 
