@@ -2,6 +2,7 @@ var Class = require('arale').Class;
 var crypto = require('crypto');
 var _ = require('lodash');
 var http = require('http');
+var url = require('url');
 
 // private sign function
 function _sign(val) {
@@ -28,7 +29,7 @@ function _nativeConvertAscii(str) {
 var Notification = Class.create({
 
 	// the host
-	_host: 'msg.umeng.com',
+	_host: 'http://msg.umeng.com',
 
 	// the upload path
 	_uploadPath: '/upload',
@@ -102,11 +103,11 @@ var Notification = Class.create({
   	var data = JSON.stringify(this._data);
   	data = _nativeConvertAscii(data);
 
-  	var url = this._host + this._postPath;
-  	var sign = _sign('POST' + url + data + this._appMasterSecret);
+  	var uri = this._host + this._postPath;
+  	var sign = _sign('POST' + uri + data + this._appMasterSecret);
 
   	var options = {
-		  host: this._host,
+		  host: url.parse(this._host).host,
 		  path: this._postPath + '?sign=' + sign,
 		  method: 'POST',
 		  headers: {
@@ -114,8 +115,6 @@ var Notification = Class.create({
         "Content-Length": data.length
     	}
 		};
-
-		console.log(options);
 
 		var req = http.request(options, function(res) {
 			res.setEncoding('utf-8');
