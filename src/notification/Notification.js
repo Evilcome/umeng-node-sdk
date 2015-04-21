@@ -91,7 +91,17 @@ var Notification = Class.create({
   	console.log(url);
   	console.log(this._data);
 
-  	request.post(url, this._data, cb);
+  	// request.post(url, this._data, cb);
+  	request({
+  		method: 'POST',
+  		uri: url,
+  		multipart: [
+  			{
+  				'content-type': 'application/json',
+  				body: JSON.stringify(this._data)
+  			}
+  		]
+  	}, cb);
   }
 });
 
