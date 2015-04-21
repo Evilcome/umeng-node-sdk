@@ -13,7 +13,7 @@ option.device_tokens = 'AnAAY5En3B7_hUqNj1If0fHtVCWkHCQXu6COu9cMmjeY';
 
 body.ticker = 'test';
 body.title = 'test title 为什么';
-body.text = 'test text';
+body.text = 'test 测试中文，特殊字符🐶';
 body.after_open = 'go_app';
 
 payload.extra = {
@@ -22,5 +22,5 @@ payload.extra = {
 
 test.send(function(err, httpResponse, body) {
 	console.log(err);
-	console.log(httpResponse);
+	console.log(body);
 });

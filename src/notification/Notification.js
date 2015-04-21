@@ -111,10 +111,11 @@ var Notification = Class.create({
 		  method: 'POST',
 		  headers: {
         "content-type": "application/json",
-        'Content-Length': data.length
-    	},
-    	body: data
+        "Content-Length": data.length
+    	}
 		};
+
+		console.log(options);
 
 		var req = http.request(options, function(res) {
 			res.setEncoding('utf-8');
@@ -126,8 +127,15 @@ var Notification = Class.create({
 		  });
 
 		  res.on('end', function() {
-		    var resultObject = JSON.parse(responseString);
-		    cb(null, res, resultObject);
+		  	console.log(responseString);
+		  	var httpResponse = res.httpResponse;
+
+		  	try{
+		  		var resultObject = JSON.parse(responseString);	
+		  		cb(null, res.httpResponse, resultObject);
+		  	}catch(e) {
+		  		cb(e, res);
+		  	}
 		  });
 		});
 
