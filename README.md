@@ -30,31 +30,33 @@ Inspired by official PHP sdk v1.4.
 ### An Example with Android Broadcast
 **ATTENTION** 不同类型的消息类型发送的内容不一致，请查看官方文档，我也会尽快更新其他示例 
 
-`nodejs
-var Umeng = require('umeng-node-sdk');
-Umeng.init(appKey: 'your_app-key', appMasterSecret: 'your_app_master_secret');
+`
 
-var info = {
-	timestamp: Date.now(),
-	device_tokens: 'your_device_token',			// 44-length token
-	payload: {
-		body: {
-			ticker: 'test',
-			title: 'test title 中文',
-			text: 'test text 特殊字符🐶',
-			after_open: 'go_app'
-		},
-		extra: {
-			foo: 'bar'
+	var Umeng = require('umeng-node-sdk');
+	Umeng.init(appKey: 'your_app-key', appMasterSecret: 'your_app_master_secret');
+
+	var info = {
+		timestamp: Date.now(),
+		device_tokens: 'your_device_token',			// 44-length token
+		payload: {
+			body: {
+				ticker: 'test',
+				title: 'test title 中文',
+				text: 'test text 特殊字符🐶',
+				after_open: 'go_app'
+			},
+			extra: {
+				foo: 'bar'
+			}
 		}
-	}
-};
+	};
 
-Umeng.android.broadcast(info, function(err, httpResponse, result) {
-	if(err) console.log(err);
+	Umeng.android.broadcast(info, function(err, httpResponse, result) {
+		if(err) console.log(err);
 
-	console.log(result);
-});
+		console.log(result);
+	});
+
 `
 
 ### 友情提醒开发者
