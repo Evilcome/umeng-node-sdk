@@ -57,5 +57,5 @@ Inspired by official PHP sdk v1.4.
 
 ### 友情提醒开发者
 - 请注意`appkey`是否开通推送功能再接入此SDK
-- 如反复收到1018错误，可能并不是appkey的问题，而是http请求的header中content-type不是json/application，或content-length不正确
-- 常会遇到中文编码问题导致2008错误[论坛帖子](http://bbs.umeng.com/thread-6928-1-1.html)，需将中文转码，该问题本SDK已修复
+- 如反复收到`1018`错误，可能并不是`appkey`的问题，而是http请求的header中`content-type`不是`json/application`，或`content-length`不正确
+- 常会遇到中文编码问题导致`2008`错误[论坛帖子](http://bbs.umeng.com/thread-6928-1-1.html)，需将中文转码，该问题本SDK已修复
