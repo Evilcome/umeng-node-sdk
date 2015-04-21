@@ -30,7 +30,6 @@ Inspired by official PHP sdk v1.4.
 ### An Example with Android Broadcast
 **ATTENTION** 不同类型的消息类型发送的内容不一致，请查看官方文档，我也会尽快更新其他示例 
 
-`
 
 	var Umeng = require('umeng-node-sdk');
 	Umeng.init(appKey: 'your_app-key', appMasterSecret: 'your_app_master_secret');
@@ -57,7 +56,6 @@ Inspired by official PHP sdk v1.4.
 		console.log(result);
 	});
 
-`
 
 ### 友情提醒开发者
 - 请注意`appkey`是否开通推送功能再接入此SDK
