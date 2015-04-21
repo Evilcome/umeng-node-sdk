@@ -5,7 +5,8 @@ var request = require('request');
 
 // private sign function
 function _sign(val) {
-	return crypto.createHash('md5').update((val).toString(), 'UTF-8').digest('hex');
+	console.log(val);
+	return crypto.createHash('md5').update(val).digest('hex');
 }
 
 var Notification = Class.create({
