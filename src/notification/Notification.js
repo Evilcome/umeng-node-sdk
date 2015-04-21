@@ -124,6 +124,7 @@ var Notification = Class.create({
 		  json: true,
 		  headers: {
         "content-type": "application/json",
+        'Content-Length': data.length
     	},
     	body: data
 		};
