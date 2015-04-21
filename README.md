@@ -29,8 +29,12 @@ Inspired by official PHP sdk v1.4.
 **ATTENTION** 不同类型的消息类型发送的内容不一致，请查看官方文档，我也会尽快更新其他示例 
 
 
-	var Umeng = require('umeng-node-sdk');
-	Umeng.init(appKey: 'your_app-key', appMasterSecret: 'your_app_master_secret');
+	var SDK = require('umeng-node-sdk');
+	var android = SDK({ 
+		platform: 'android',
+		appKey: 'your_app_key', 
+		appMasterSecret: 'your_app_master_secret' 
+	});
 
 	var info = {
 		timestamp: Date.now(),
@@ -48,7 +52,7 @@ Inspired by official PHP sdk v1.4.
 		}
 	};
 
-	Umeng.android.broadcast(info, function(err, httpResponse, result) {
+	android.unicast(info, function(err, httpResponse, result) {
 		if(err) console.log(err);
 
 		console.log(result);

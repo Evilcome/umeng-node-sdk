@@ -51,6 +51,10 @@ var Notification = Class.create({
 		this._appMasterSecret = sec;
 	},
 
+	getData: function() {
+		return this._data;
+	},
+
 	//return TRUE if it's complete, otherwise throw exception with details
 	isComplete: function() {
 		if(!this._appMasterSecret) {
