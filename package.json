@@ -19,6 +19,7 @@
   "dependencies": {
     "arale": "^0.2.0",
     "lodash": "^3.7.0",
-    "request": "^2.55.0"
+    "request": "^2.55.0",
+    "request-json": "^0.5.2"
   }
 }

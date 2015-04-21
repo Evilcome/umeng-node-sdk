@@ -1,7 +1,7 @@
 var Class = require('arale').Class;
 var crypto = require('crypto');
 var _ = require('lodash');
-var request = require('request');
+var request = require('request-json');
 
 // private sign function
 function _sign(val) {
@@ -85,23 +85,14 @@ var Notification = Class.create({
   	var url = this._host + this._postPath;
   	var sign = _sign('POST' + url + JSON.stringify(this._data) + this._appMasterSecret);
 
-  	url = url + '?sign=' + sign;
+  	url = this._postPath + '?sign=' + sign;
 
   	// debug
   	console.log(url);
   	console.log(this._data);
 
-  	// request.post(url, this._data, cb);
-  	request({
-  		method: 'POST',
-  		uri: url,
-  		multipart: [
-  			{
-  				'content-type': 'application/json',
-  				body: JSON.stringify(this._data)
-  			}
-  		]
-  	}, cb);
+  	var client = request.createClient(this._host);
+  	client.post(url, this._data, cb);
   }
 });
 
