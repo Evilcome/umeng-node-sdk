@@ -80,7 +80,7 @@ var Notification = Class.create({
   	var url = this._host + this._postPath;
   	var sign = _sign('POST' + url + JSON.stringify(this._data) + this._appMasterSecret);
 
-  	url = url + '?sign=' + sign;
+  	url = url + '?sign=' + "sssss";
 
   	// debug
   	console.log(url);
