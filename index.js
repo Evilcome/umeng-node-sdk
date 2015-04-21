@@ -21,5 +21,6 @@ payload.extra = {
 };
 
 test.send(function(err, httpResponse, body) {
+	console.log(err);
 	console.log(httpResponse);
 });

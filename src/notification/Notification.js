@@ -1,7 +1,7 @@
 var Class = require('arale').Class;
 var crypto = require('crypto');
 var _ = require('lodash');
-var request = require('request');
+var http = require('http');
 
 // private sign function
 function _sign(val) {
@@ -28,7 +28,7 @@ function _nativeConvertAscii(str) {
 var Notification = Class.create({
 
 	// the host
-	_host: 'http://msg.umeng.com',
+	_host: 'msg.umeng.com',
 
 	// the upload path
 	_uploadPath: '/upload',
@@ -94,34 +94,21 @@ var Notification = Class.create({
 
   send: function(cb) {
 
-  	// console.log(_nativeConvertAscii("aaa 中文"));
-  	var data = JSON.stringify(this._data);
-  	data = _nativeConvertAscii(data);
-  	// this._data.payload.body.title = _nativeConvertAscii(this._data.payload.body.title);
-
   	// check the fields to make sure that tyey are not null
   	var inComplete = this.isComplete();
   	if(inComplete) return cb(inComplete);
 
   	// solve issure: http://bbs.umeng.com/thread-6928-1-1.html
-  	// this.encodeChinese(this.data);
+  	var data = JSON.stringify(this._data);
+  	data = _nativeConvertAscii(data);
 
   	var url = this._host + this._postPath;
   	var sign = _sign('POST' + url + data + this._appMasterSecret);
 
-  	url = url + '?sign=' + sign;
-  	// debug
-  	// console.log(url);
-  	// console.log(this._data);
-
-  	// use request-json can solve 1018 error
-  	// var client = request.createClient(this._host);
-  	// client.post(url, this._data, cb);
-
   	var options = {
-		  url: url,
+		  host: this._host,
+		  path: this._postPath + '?sign=' + sign,
 		  method: 'POST',
-		  json: true,
 		  headers: {
         "content-type": "application/json",
         'Content-Length': data.length
@@ -129,9 +116,27 @@ var Notification = Class.create({
     	body: data
 		};
 
-		console.log(options);
+		var req = http.request(options, function(res) {
+			res.setEncoding('utf-8');
 
-		request(options, cb);
+		  var responseString = '';
+
+		  res.on('data', function(data) {
+		    responseString += data;
+		  });
+
+		  res.on('end', function() {
+		    var resultObject = JSON.parse(responseString);
+		    cb(null, res, resultObject);
+		  });
+		});
+
+		req.write(data);
+		req.end();
+
+		req.on('error', function(e) {
+		  cb(e);
+		});
   }
 });
 
