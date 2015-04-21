@@ -1,12 +1,28 @@
 var Class = require('arale').Class;
 var crypto = require('crypto');
 var _ = require('lodash');
-var request = require('request-json');
+var request = require('request');
 
 // private sign function
 function _sign(val) {
-	console.log(val);
+	// console.log(val);
 	return crypto.createHash('md5').update(val).digest('hex');
+}
+
+function _nativeConvertAscii(str) {
+	var ascii = '';
+	for(var i = 0; i != str.length; i++) {
+		var code = Number(str[i].charCodeAt(0));
+		if(code > 127) {
+			charAscii = code.toString(16);
+			charAscii = new String("0000").substring(charAscii.length, 4) + charAscii
+			ascii += "\\u" + charAscii;
+		} else {
+			ascii += str[i]
+		}
+	}
+
+	return ascii;
 }
 
 var Notification = Class.create({
@@ -78,21 +94,43 @@ var Notification = Class.create({
 
   send: function(cb) {
 
+  	// console.log(_nativeConvertAscii("aaa 中文"));
+  	var data = JSON.stringify(this._data);
+  	data = _nativeConvertAscii(data);
+  	// this._data.payload.body.title = _nativeConvertAscii(this._data.payload.body.title);
+
   	// check the fields to make sure that tyey are not null
   	var inComplete = this.isComplete();
   	if(inComplete) return cb(inComplete);
 
+  	// solve issure: http://bbs.umeng.com/thread-6928-1-1.html
+  	// this.encodeChinese(this.data);
+
   	var url = this._host + this._postPath;
-  	var sign = _sign('POST' + url + JSON.stringify(this._data) + this._appMasterSecret);
+  	var sign = _sign('POST' + url + data + this._appMasterSecret);
 
-  	url = this._postPath + '?sign=' + sign;
-
+  	url = url + '?sign=' + sign;
   	// debug
-  	console.log(url);
-  	console.log(this._data);
+  	// console.log(url);
+  	// console.log(this._data);
 
-  	var client = request.createClient(this._host);
-  	client.post(url, this._data, cb);
+  	// use request-json can solve 1018 error
+  	// var client = request.createClient(this._host);
+  	// client.post(url, this._data, cb);
+
+  	var options = {
+		  url: url,
+		  method: 'POST',
+		  json: true,
+		  headers: {
+        "content-type": "application/json",
+    	},
+    	body: data
+		};
+
+		console.log(options);
+
+		request(options, cb);
   }
 });
 

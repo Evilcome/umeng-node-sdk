@@ -11,8 +11,8 @@ option.appkey = '54648b6bfd98c5ce56000106';
 option.timestamp = Date.now();
 option.device_tokens = 'AnAAY5En3B7_hUqNj1If0fHtVCWkHCQXu6COu9cMmjeY';
 
-body.ticker = 'test ticker';
-body.title = 'test title';
+body.ticker = 'test';
+body.title = 'test title 为什么';
 body.text = 'test text';
 body.after_open = 'go_app';
 
@@ -22,6 +22,5 @@ payload.extra = {
 
 test.send(function(err, httpResponse, body) {
 	console.log(err);
-	console.log(httpResponse);
 	console.log(body);
 });
