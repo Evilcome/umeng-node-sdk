@@ -1,0 +1,24 @@
+{
+  "name": "umeng-node-sdk",
+  "version": "0.0.1",
+  "description": "Umeng push notification nodejs version.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Evilcome/umeng-node-sdk.git"
+  },
+  "author": "Evilcome",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Evilcome/umeng-node-sdk/issues"
+  },
+  "homepage": "https://github.com/Evilcome/umeng-node-sdk",
+  "dependencies": {
+    "arale": "^0.2.0",
+    "lodash": "^3.7.0",
+    "request": "^2.55.0"
+  }
+}
