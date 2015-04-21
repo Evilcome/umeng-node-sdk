@@ -11,6 +11,9 @@
     "url": "https://github.com/Evilcome/umeng-node-sdk.git"
   },
   "author": "Evilcome",
+  "keywords": [
+    "umeng", "notification", "push", "sdk"
+  ],
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/Evilcome/umeng-node-sdk/issues"

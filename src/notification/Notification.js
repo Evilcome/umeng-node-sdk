@@ -126,7 +126,6 @@ var Notification = Class.create({
 		  });
 
 		  res.on('end', function() {
-		  	console.log(responseString);
 		  	var httpResponse = res.httpResponse;
 
 		  	try{
