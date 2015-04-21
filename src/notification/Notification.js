@@ -20,7 +20,7 @@ var Notification = Class.create({
 	_postPath: '/api/send',
 
 	// the app master secret
-	_appMasterSecret: 'nuslg4drwbdu1odmmrdzcb9ll9pza7cl',
+	_appMasterSecret: '',
 
 	/*
 	 * $data is designed to construct the json string for POST request. Note:
@@ -28,6 +28,10 @@ var Notification = Class.create({
 	 * 2)The value for key 'payload' is set in the subclass(AndroidNotification or IOSNotification), as their payload structures are different.
 	 */ 
 	_data: null,
+
+	setAppMasterSecret: function(sec) {
+		this._appMasterSecret = sec;
+	},
 
 	//return TRUE if it's complete, otherwise throw exception with details
 	isComplete: function() {
