@@ -25,7 +25,7 @@ Inspired by official PHP sdk v1.4.
 
 ## Usage
 
-### An Example with Android Broadcast
+### An Example with Android Unicast
 **ATTENTION** 不同类型的消息类型发送的内容不一致，请查看官方文档，我也会尽快更新其他示例 
 
 
