@@ -23,6 +23,10 @@ Inspired by official PHP sdk v1.4.
 - [x] Groupcast
 - [x] Unicast
 
+## Install
+
+`npm install umeng-node-sdk`
+
 ## Usage
 
 ### An Example with Android Unicast
