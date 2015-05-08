@@ -1,6 +1,6 @@
 {
   "name": "umeng-node-sdk",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Umeng push notification nodejs version.",
   "main": "index.js",
   "scripts": {

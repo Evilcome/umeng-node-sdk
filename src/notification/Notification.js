@@ -136,7 +136,7 @@ var Notification = Class.create({
 		  		var resultObject = JSON.parse(responseString);	
 		  		cb(null, res.httpResponse, resultObject);
 		  	}catch(e) {
-		  		cb(e, res);
+		  		cb(e, responseString);
 		  	}
 		  });
 		});

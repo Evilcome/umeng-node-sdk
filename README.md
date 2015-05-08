@@ -10,7 +10,7 @@ Inspired by official PHP sdk v1.4.
 ### IOS
 
 - [x] Broadcast
-- [ ] Customizedcast
+- [x] Customizedcast
 - [ ] Filecast
 - [x] Groupcast
 - [x] Unicast
@@ -18,7 +18,7 @@ Inspired by official PHP sdk v1.4.
 ### Android
 
 - [x] Broadcast
-- [ ] Customizedcast
+- [x] Customizedcast
 - [ ] Filecast
 - [x] Groupcast
 - [x] Unicast
